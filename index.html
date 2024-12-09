@@ -49,6 +49,11 @@
 </head>
 <body>
 
+    <audio id="backgroundAudio" autoplay loop>
+        <source src="music/pal ek pal.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <p id="audioMessage" style="display:none;">Click anywhere to start the music</p>
     <div class="banner">
         <div class="slider" style="--quantity: 8">
             <div class="item" style="--position: 1"><img src="images/sree1.jpg" alt=""></div>
@@ -114,7 +119,20 @@
 </script>
 <!-- Add this inside the <head> tag, before the closing </head> tag -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+<script>
+ const audio = document.getElementById('backgroundAudio');
+  const message = document.getElementById('audioMessage');
 
+  // Wait for any click on the page to unmute and start the audio
+  document.addEventListener('click', () => {
+    audio.muted = false; // Unmute
+    audio.play().then(() => {
+      message.style.display = 'none'; // Hide message once music starts
+    }).catch((error) => {
+      console.log('Autoplay failed:', error);
+    });
+  });
+  </script>
 <script>
     // Show confetti on page load
     window.onload = function() {
