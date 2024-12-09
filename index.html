@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+
     <style>
         
         *{
@@ -39,28 +44,30 @@
             pointer-events: none;
         }
     </style>
+    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="banner">
-        <div class="slider" style="--quantity: 10">
-            <div class="item" style="--position: 1"><img src="images/free-photo-of-stylish-woman-posing-with-bicycle-indoors.jpeg" alt=""></div>
-            <div class="item" style="--position: 2"><img src="images/dragon_2.jpg" alt=""></div>
-            <div class="item" style="--position: 3"><img src="images/dragon_3.jpg" alt=""></div>
-            <div class="item" style="--position: 4"><img src="images/dragon_4.jpg" alt=""></div>
-            <div class="item" style="--position: 5"><img src="images/pexels-photo-29658206.webp" alt=""></div>
-            <div class="item" style="--position: 6"><img src="images/dragon_6.jpg" alt=""></div>
-            <div class="item" style="--position: 7"><img src="images/dragon_7.jpg" alt=""></div>
-            <div class="item" style="--position: 8"><img src="images/dragon_8.jpg" alt=""></div>
-            <div class="item" style="--position: 9"><img src="images/dragon_9.jpg" alt=""></div>
-            <div class="item" style="--position: 10"><img src="images/dragon_10.jpg" alt=""></div>
+        <div class="slider" style="--quantity: 8">
+            <div class="item" style="--position: 1"><img src="images/sree1.jpg" alt=""></div>
+            <div class="item" style="--position: 2"><img src="images/sree12.jpg" alt=""></div>
+            <div class="item" style="--position: 3"><img src="images/sree3.jpg" alt=""></div>
+            <div class="item" style="--position: 4"><img src="images/sree13.jpg" alt=""></div>
+           
+            <div class="item" style="--position: 8"><img src="images/sree7.JPG" alt=""></div>
+            <div class="item" style="--position: 6"><img src="images/sree8.JPG" alt=""></div>
+            <div class="item" style="--position: 7"><img src="images/sree11.jpg" alt=""></div>
+            <div class="item" style="--position: 5"><img src="images/sree10.jpg" alt=""></div>
+            <!-- <div class="item" style="--position: 9"><img src="images/dragon_9.jpg" alt=""></div> -->
+            <!-- <div class="item" style="--position: 10"><img src="images/dragon_10.jpg" alt=""></div> -->
+          
         </div>
         <div class="content">
             <div class="author">
-                <h2>Siyad</h2>
-                <p><b>Happy Birthday</b></p>
-                <div class="birthday-quote">
+                
+                <div id="qutes" class="birthday-quote">
                     "ᴄᴏᴜɴᴛ ʏᴏᴜʀ ʟɪꜰᴇ ʙʏ ꜱᴍɪʟᴇꜱ, ɴᴏᴛ ᴛᴇᴀʀꜱ. <br>
                     ᴄᴏᴜɴᴛ ʏᴏᴜʀ ᴀɢᴇ ʙʏ ꜰʀɪᴇɴᴅꜱ, ɴᴏᴛ ʏᴇᴀʀꜱ. <br>
                     ʜᴀᴘᴘʏ ʙɪʀᴛʜᴅᴀʏ!"
@@ -75,19 +82,60 @@
 </body>
 
 <script>
+    // const sleep=document.getElementById('qutes')
+
+
+    // setTimeout(() => {
+    //     sleep.style.display='none'
+
+        
+    // }, 10000);
     // Select all the images in the slider
     const sliderItems = document.querySelectorAll('.banner .slider .item img');
+    console.log(sliderItems);
+    
     const modelBackground = document.querySelector('.banner .content .model');
+    let imge='images/sree2.jpg'
+    console.log(imge);
+    
+    modelBackground.style.backgroundImage=`url(${imge})`
 
     // Add click event listeners to each image
     sliderItems.forEach((img) => {
         img.addEventListener('click', () => {
             // Get the image source
             const imageSrc = img.getAttribute('src');
+           
+            
             // Set the image as the background
             modelBackground.style.backgroundImage = `url(${imageSrc})`;
         });
     });
 </script>
+<!-- Add this inside the <head> tag, before the closing </head> tag -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+
+<script>
+    // Show confetti on page load
+    window.onload = function() {
+        var end = Date.now() + (1 * 1000); // 5 seconds of confetti
+        var interval = setInterval(function() {
+            confetti({
+                particleCount: 100,
+                startVelocity: 30,
+                spread: 360,
+                origin: {
+                    x: Math.random(),
+                    y: Math.random() - 0.2
+                }
+            });
+
+            if (Date.now() > end) {
+                clearInterval(interval);
+            }
+        }, 250); // Fire confetti every 250 milliseconds
+    }
+</script>
+
 
 </html>
